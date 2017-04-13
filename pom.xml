@@ -11,7 +11,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <spring-version>4.3.6.RELEASE</spring-version>
+        <spring-version>4.1.9.RELEASE</spring-version>
         <hibernate.version>5.1.0.Final</hibernate.version>
         <mybatis.version>3.2.2</mybatis.version>
         <mybatis.spring.version>1.2.2</mybatis.spring.version>
@@ -23,8 +23,12 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
+            <version>4.11</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -42,9 +46,14 @@
             <version>${spring-version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>1.10.1.RELEASE</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.1.9.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring-version}</version>
         </dependency>
 
         <dependency>
@@ -105,13 +114,45 @@
             <version>9.2.10.v20150310</version>
         </dependency>
         <!-- jetty end -->
+        <!-- disconf -->
+        <!--<dependency>
+            <groupId>com.baidu.disconf</groupId>
+            <artifactId>disconf-client</artifactId>
+            <version>2.6.33</version>
+        </dependency>-->
+        <!-- end -->
+        <!-- jackson -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.4</version>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>springmvc</finalName>
+        <!-- 本地调试需要打开，否则访问不了jsp文件 -->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main/webapp</directory>
+                <targetPath>/webapp</targetPath>
+            </resource>
+        </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>

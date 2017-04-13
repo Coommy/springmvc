@@ -9,6 +9,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.XmlWebApplicationContext;
 
 /**
+ * //TODO 再研究下
  * Created by xuht on 2017/4/5.
  */
 public class JettyServer implements ApplicationContextAware {
@@ -16,7 +17,7 @@ public class JettyServer implements ApplicationContextAware {
     private Server server;
     private ApplicationContext applicationContext;
 
-    private int wechatRemotePort = 7882;
+    private int wechatRemotePort = 8080;
     private String wechatRemotePath = "/";
     private String wechatRemoteDescriptor = "web.xml";
     private String wechatRemoteResourceBase = "webapp";
