@@ -2,7 +2,6 @@ package com.commy.controller;
 
 import com.commy.bean.User;
 import com.commy.dao.UserDao;
-import org.codehaus.jackson.map.Serializers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,7 +14,7 @@ import javax.annotation.Resource;
  */
 @Controller
 @RequestMapping(value = "/main")
-public class MainController extends BaseController{
+public class MainController extends BaseController {
     @Resource
     private UserDao userDao;
 
@@ -28,5 +27,11 @@ public class MainController extends BaseController{
         user.setPassword("123456");
         userDao.insertUser(user);
         return buildMessage(ResultModal.SUCCESS,"success");
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/test")
+    public String test(){
+        return buildMessage(ResultModal.SUCCESS);
     }
 }
